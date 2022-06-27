@@ -1,5 +1,5 @@
 <?php
-//! for best practices to prevent sql injection use ' ' single quotes or turn it into a string
+//! for best practices to prevent sql injection use ' ' single quotes or turn it into a string prepared statements keep data and code separate
   // Subjects
 
   function find_all_subjects() {//find all subjects from subjects database
@@ -25,7 +25,7 @@
     return $subject; // returns an assoc. array
   }
 
-  function validate_subject($subject) {
+  function validate_subject($subject) {//validate
     $errors = [];//error array gethers errors as it goes through the function dumps them all at the same time on return $errors
 
     // menu_name
