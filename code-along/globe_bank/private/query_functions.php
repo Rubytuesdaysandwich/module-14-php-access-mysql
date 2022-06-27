@@ -14,14 +14,14 @@
   }
 
   function find_subject_by_id($id) {// find a subject by id
-    global $db;
+    global $db;//pull $db from the global scope
 
     $sql = "SELECT * FROM subjects ";
     $sql .= "WHERE id='" . $id . "'";
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);
-    $subject = mysqli_fetch_assoc($result);
-    mysqli_free_result($result);
+    $subject = mysqli_fetch_assoc($result);//fetch the subject
+    mysqli_free_result($result);//free the result close it
     return $subject; // returns an assoc. array
   }
 
