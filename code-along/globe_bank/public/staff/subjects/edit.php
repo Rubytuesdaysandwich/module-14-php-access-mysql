@@ -8,9 +8,7 @@ if(!isset($_GET['id'])){//makes the page go back to subject/new.php if there is 
     redirect_to(url_for('staff/subjects/new.php'));}
 
     $id=$_GET['id'];//set variable $id to $_GET['id']
-    $menu_name='';//empty string assigned as default values to variables
-    $position ='';//empty string assigned as default values to variables
-    $visible= '';//empty string assigned as default values to variables
+    $subject = find_subject_by_id($id);//from query functions.php find a single subject
 
 if(is_post_request()){//checking if it is a post request.
     // Handle form values sent by new.php

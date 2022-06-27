@@ -73,10 +73,10 @@
     $result = mysqli_query($db, $sql);
     // For INSERT statements, $result is true/false
     if($result) {
-      return true;
+      return true;//succeed
     } else {
       // INSERT failed
-      echo mysqli_error($db);
+      echo mysqli_error($db);//report back an error
       db_disconnect($db);
       exit;
     }

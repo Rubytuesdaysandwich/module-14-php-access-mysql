@@ -5,7 +5,7 @@ $id =$_GET['id'] ??'1';//php 7.0//special global variable
 //sending $id to the browser
 //echo h($id);
 
-$subject = find_subject_by_id($id);
+$subject = find_subject_by_id($id);//from query functions.php find a single subject
 ?>
 <?php $page_title ='Show Subject';?>
 <?php include(SHARED_PATH . '/staff_header.php');?>
