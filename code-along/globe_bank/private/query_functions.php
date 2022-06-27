@@ -120,7 +120,7 @@
 
     // For DELETE statements, $result is true/false
     if($result) {
-      return true;
+      return true;//succeed
     } else {
       // DELETE failed
       echo mysqli_error($db);

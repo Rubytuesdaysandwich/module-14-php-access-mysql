@@ -2,7 +2,14 @@
 //!white space like this is ok
 $test = $_GET['test']?? '';
 
- 
+//find subject count
+$subject_set = find_all_subjects();//find all subjects in the database
+$subject_count = mysqli_num_rows($subject_set) + 1;//get the number of rows + 1
+mysqli_free_result($subject_set);
+//end find subject count
+
+ $subject =[];
+ $subject["position"] = $subject_count;
 
 if(is_post_request()){//checking to see if it is a post request. If it is a get request we get redirected to staff/subjects/new.php'
   // Handle form values sent by new.php
