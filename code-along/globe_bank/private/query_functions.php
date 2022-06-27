@@ -100,7 +100,7 @@
     $result = mysqli_query($db, $sql);
     // For UPDATE statements, $result is true/false
     if($result) {
-      return true;
+      return true;//succeed
     } else {
       // UPDATE failed
       echo mysqli_error($db);
