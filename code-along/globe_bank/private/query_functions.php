@@ -1,5 +1,5 @@
 <?php
-
+//! for best practices to prevent sql injection use ' ' single quotes or turn it into a string
   // Subjects
 
   function find_all_subjects() {//find all subjects from subjects database
