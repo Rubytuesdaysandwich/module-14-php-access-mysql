@@ -46,11 +46,16 @@ if(is_post_request()){//checking to see if it is a post request. If it is a get 
         <dt>Position</dt>
         <dd>
           <select name="position"><!--get position-->
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
+          <?php
+            for($i=1; $i <= $subject_count; $i++){//options from $subject count
+              echo "<option value=\"{$i}\"";
+              if($subject["position"]=== $i){
+                echo "selected";
+              }
+              echo "> {$i}</option>";
+
+            }
+            ?>
           </select>
         </dd>
       </dl>
