@@ -45,7 +45,8 @@ $subject_set= find_all_subjects();//query database
 
     <?php
     
-    mysqli_free_result($subject_set);
+    mysqli_free_result($subject_set);//end after result for good practices
+    
     
     ?>
 
