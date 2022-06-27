@@ -3,10 +3,10 @@
   // Subjects
 
   function find_all_subjects() {//find all subjects from subjects database
-    global $db;
+    global $db;//grabbing db from the outside scop so it has access
 
     $sql = "SELECT * FROM subjects ";//select subjects
-    $sql .= "ORDER BY position ASC";
+    $sql .= "ORDER BY position ASC";//order by position
     //echo $sql;
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);

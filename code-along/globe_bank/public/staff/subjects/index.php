@@ -1,13 +1,12 @@
 <?php require_once('../../../private/initialize.php'); ?>
 
 <?php
-  $subjects = [
-    ['id' => '1', 'position' => '1', 'visible' => '1', 'menu_name' => 'About Globe Bank'],
-    ['id' => '2', 'position' => '2', 'visible' => '1', 'menu_name' => 'Consumer'],
-    ['id' => '3', 'position' => '3', 'visible' => '1', 'menu_name' => 'Small Business'],
-    ['id' => '4', 'position' => '4', 'visible' => '1', 'menu_name' => 'Commercial'],
-  ];
-//$subjects array?>
+
+
+$subject_set= find_all_subjects();//query database
+
+  
+?>
 
 <?php $page_title = 'Subjects';//page title ?>
 <?php include(SHARED_PATH . '/staff_header.php');//staff header html path ?>
@@ -31,7 +30,7 @@
         <th>&nbsp;</th><!--table header-->
   	  </tr><!--end table row-->
 
-      <?php foreach($subjects as $subject) { //for each loop takeing subjects array as $subject?>
+      <?php while($subject = mysqli_fetch_assoc($subject_set)) { //for each loop takeing subjects array as $subject?>
         <tr>
           <td><?php echo $subject['id']; ?></td><!--table data-->
           <td><?php echo $subject['position']; ?></td><!--table data-->
@@ -43,6 +42,13 @@
     	  </tr>
       <?php } ?>
   	</table><!--end table-->
+
+    <?php
+    
+    mysqli_free_result($subject_set);
+    
+    ?>
+
 
   </div>
 
