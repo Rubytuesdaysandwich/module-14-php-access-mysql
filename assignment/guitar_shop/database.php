@@ -1,4 +1,10 @@
 <?php
+define("DB_SERVER","localhost");
+define("DB_USER","guitar_pro");
+define("DB_PASS","strongpas");
+define("DB_NAME","my_guitar_shop");
+
+
 //Create database connection
 function db_connect(){
     $connection = mysqli_connect(DB_SERVER,DB_USER,DB_PASS,DB_NAME);//mysqli connection establish
@@ -26,10 +32,6 @@ function confirm_db_connect() {//confirm the connection is good
     	exit("Database query failed.");//if database query fails then exit
     }
   }
-
-
-
-
 
 
 

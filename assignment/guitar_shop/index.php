@@ -1,6 +1,8 @@
 <?php
 require_once('database.php');
 
+
+
 // Get category ID
 if (!isset($category_id)) {
     $category_id = filter_input(INPUT_GET, 'category_id', 
