@@ -1,0 +1,3 @@
+<?php
+//Create database connection
+?>
