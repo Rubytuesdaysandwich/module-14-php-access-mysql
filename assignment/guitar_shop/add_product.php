@@ -17,8 +17,8 @@ if ($category_id == null || $category_id == false ||
     require_once('database.php');
 
     // Add the product to the database  
-    $sql = "INSERT INTO products (productCode, productName, listPrice, categoryID) ";
-$sql .= " VALUES('".$_POST."') ";
+    $sql = "INSERT INTO products (categoryID) ";
+$sql .= " VALUES('".$category_id."','".$code."','".$name."','".$price."') ";
 $products= mysqli_query($db,$sql);
 
 if(!empty($category_id ||$code || $name ||$price )){
