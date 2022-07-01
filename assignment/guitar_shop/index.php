@@ -13,7 +13,16 @@ if (!isset($category_id)) {
 }
 // Get name for selected category
 
+function find_all_subjects() {//find all subjects from subjects database
+    global $db;//grabbing db from the outside scop so it has access
 
+    $sql = "SELECT * FROM subjects ";//select subjects//! the space after subjects is important to the query
+    $sql .= "ORDER BY position ASC";//order by position
+    //*echo $sql; this can be used to trouble shoot connection
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);//confirm the result
+    return $result;
+  }
 // Get all categories
 
 

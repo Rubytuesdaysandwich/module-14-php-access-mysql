@@ -1,11 +1,11 @@
 <?php
-$db=db_connect();
+
 
 define("DB_SERVER","localhost");
 define("DB_USER","guitar_pro");
 define("DB_PASS","passhere");
 define("DB_NAME","my_guitar_shop");
-
+$db=db_connect();
 
 //Create database connection
 function db_connect(){
@@ -31,7 +31,8 @@ function confirm_db_connect() {//confirm the connection is good
 
   function confirm_result_set($result_set) {
     if (!$result_set) {
-    	exit("Database query failed.");//if database query fails then exit
+      redirect('/guitar_shop/database_error.php');//should redirect the user to database_error.php if the result of the connection is not good.
+    //	exit("Database query failed.");//if database query fails then exit
     }
   }
 
