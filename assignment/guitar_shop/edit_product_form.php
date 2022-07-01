@@ -17,6 +17,28 @@ $categories= mysqli_query($db,$sql);
 <!-- the body section -->
 <body>
 
+<?php
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    //tracking if form is submitted
+        $categories=$_POST[''] ?? '';
+        $=$_POST['']??'';
+        $=$_POST['']??'';
+        if it is a post request this will get value for the session
+        $_SESSION[''] =$;
+        $_SESSION[''] =$;
+        $_SESSION[''] =$;
+
+    }else{
+        if not postrequest it will output them
+        $=$_SESSION['investment'] ??'';
+        $=$_SESSION['interest_rate'] ??'';
+        $=$_SESSION['years'] ??'';
+    }
+
+
+
+
+?>
 
     <header><h1>Product Manager</h1></header>
 
