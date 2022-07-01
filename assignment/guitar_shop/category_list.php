@@ -3,6 +3,12 @@ require_once('database.php');
 
 // Get all categories
 
+
+
+
+
+
+
 ?>
 <!DOCTYPE html>
 <html>
