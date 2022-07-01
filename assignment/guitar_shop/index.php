@@ -1,6 +1,10 @@
 <?php
 require_once('database.php');
 
+function db_escape($connection, $string){
+    return mysqli_real_escape_string($connection, $string);
+  }
+
 $categories = array("categoryID"=>"","categoryName"=>"");
 $products = array("productCode"=>"","productName"=>"","listPrice"=>"","productID"=>"","categoryID"=>"");
 // $category_name="";
@@ -20,7 +24,7 @@ if (!isset($category_id)) {
     // global $db;//grabbing db from the outside scop so it has access
 
     $sql = "SELECT categoryName FROM categories  ";//select categories
-    $sql .= "WHERE categoryID='" . $category_id . "'";//by category name
+    $sql .= "WHERE categoryID='" . db_escape($db,$category_id) . "'";//by category name
     //*echo $sql; this can be used to trouble shoot connection
     $result = mysqli_query($db, $sql);//send the query to the database
     $row = $result -> fetch_assoc();//fetch assoc array assign to $row
