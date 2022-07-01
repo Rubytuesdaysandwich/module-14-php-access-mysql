@@ -1,4 +1,5 @@
 <?php
+
 require_once('database.php');
 
 function db_escape($connection, $string){
@@ -20,7 +21,7 @@ if (!isset($category_id)) {
 }
 // Get name for selected category
 
-// function find_name_selected_category() {//find all subjects from subjects database
+ //function find_name_selected_category() {//find all subjects from subjects database
     // global $db;//grabbing db from the outside scop so it has access
 
     $sql = "SELECT categoryName FROM categories  ";//select categories
@@ -30,8 +31,10 @@ if (!isset($category_id)) {
     $row = $result -> fetch_assoc();//fetch assoc array assign to $row
     $category_name = $row['categoryName'];//get the row from the category name
 
-    // return $category_name;
-//   }
+   // return $category_name;
+  //}
+
+
 // Get all categories,
 // function find_all_categories() {//find categories from database
     // global $db;//grabbing db from the outside scop so it has access

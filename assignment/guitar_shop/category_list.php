@@ -2,13 +2,14 @@
 require_once('database.php');
 
 // Get all categories
+$sql = "SELECT * FROM categories ";
+$sql .= " ORDER BY categoryID ASC ";
 
 
 
 
 
-
-
+echo $sql;
 ?>
 <!DOCTYPE html>
 <html>
@@ -37,7 +38,12 @@ require_once('database.php');
     <h2>Add Category</h2>
     
     <!-- add code for the form here -->
-    
+        <form action="new_category" method="post">
+        <input type="" name="categoryID">
+        <input type="" name="categoryName">
+        <input type="submit" value="create">
+        </form>
+
     <br>
     <p><a href="index.php">List Products</a></p>
 
