@@ -21,8 +21,8 @@ $categories= mysqli_query($db,$sql);
     <header><h1>Product Manager</h1></header>
 
     <main>
-        <h1>Add Product</h1>
-        <form action="add_product.php" method="post"
+        <h1>edit product</h1>
+        <form action="edit_product.php" method="post"
               id="add_product_form">
 
             <label>Category:</label>
@@ -44,7 +44,7 @@ $categories= mysqli_query($db,$sql);
             <input type="text" name="price"><br>
 
             <label>&nbsp;</label>
-            <input type="submit" value="Add Product"><br>
+            <input type="submit" value="edit product"><br>
         </form>
         <p><a href="index.php">View Product List</a></p>
     </main>
