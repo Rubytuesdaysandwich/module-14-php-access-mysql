@@ -1,7 +1,9 @@
 <?php
 require('database.php');
 //Get Categories from the Database
-
+$sql = "SELECT * FROM categories ";
+$sql .= " ORDER BY categoryID ASC ";
+$categories= mysqli_query($db,$sql);
 ?>
 <!DOCTYPE html>
 <html>
@@ -14,6 +16,8 @@ require('database.php');
 
 <!-- the body section -->
 <body>
+
+
     <header><h1>Product Manager</h1></header>
 
     <main>
