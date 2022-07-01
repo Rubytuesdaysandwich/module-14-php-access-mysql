@@ -110,6 +110,14 @@ if (!isset($category_id)) {
                            value="<?php echo $product['categoryID']; ?>">
                     <input type="submit" value="Delete">
                 </form></td>
+                <td><form action="edit_product.php" method="post">
+                    <input type="hidden" name="product_id"
+                           value="<?php echo $product['productID']; ?>">
+                    <input type="hidden" name="category_id"
+                           value="<?php echo $product['categoryID']; ?>">
+                    <input type="submit" value="edit">
+                </form></td>
+
             </tr>
             <?php endforeach; ?>
         </table>
