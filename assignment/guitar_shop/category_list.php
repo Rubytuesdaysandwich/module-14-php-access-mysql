@@ -4,7 +4,7 @@ require_once('database.php');
 // Get all categories
 $sql = "SELECT * FROM categories ";
 $sql .= " ORDER BY categoryID ASC ";
-
+$categories= mysqli_query($db,$sql);
 
 
 
@@ -32,16 +32,21 @@ echo $sql;
         </tr>
         
         <!-- add code for the rest of the table here -->
-    
+<?php foreach($categories as $category) : ?>
+        <!-- <td><?php //echo $category['categoryID']; ?></td> -->
+        <td><?php echo $category['categoryName']; ?></td>
+
+
+<?php endforeach;   ?>
     </table>
 
     <h2>Add Category</h2>
     
     <!-- add code for the form here -->
-        <form action="new_category" method="post">
-        <input type="" name="categoryID">
-        <input type="" name="categoryName">
-        <input type="submit" value="create">
+        <form action="add_category.php" method="post">
+        <!-- <input type="text" name="categoryID" placeholder="ID"> -->
+        <input type="text" name="categoryName"placeholder="Name">
+        <input type="submit" value="add">
         </form>
 
     <br>
