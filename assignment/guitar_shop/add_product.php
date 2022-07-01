@@ -4,10 +4,10 @@ $category_id = filter_input(INPUT_POST, 'category_id', FILTER_VALIDATE_INT);
 $code = filter_input(INPUT_POST, 'code');
 $name = filter_input(INPUT_POST, 'name');
 $price = filter_input(INPUT_POST, 'price', FILTER_VALIDATE_FLOAT);
-var_dump($category_id);
-var_dump($code);
-var_dump($name);
-var_dump($price);
+    // var_dump($category_id);
+    // var_dump($code);
+    // var_dump($name);
+    // var_dump($price);
 // Validate inputs
 if ($category_id == null || $category_id == false ||
         $code == null || $name == null || $price == null || $price == false) {
@@ -17,7 +17,7 @@ if ($category_id == null || $category_id == false ||
     require_once('database.php');
 
     // Add the product to the database  
-    $sql = "INSERT INTO products (categoryID) ";
+    $sql = "INSERT INTO products (categoryID,productCode,productName,listPrice) ";
 $sql .= " VALUES('".$category_id."','".$code."','".$name."','".$price."') ";
 $products= mysqli_query($db,$sql);
 
