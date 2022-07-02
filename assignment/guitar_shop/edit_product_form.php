@@ -13,7 +13,7 @@ global $db;
     $sql .= "LIMIT 1";
     $result= mysqli_query($db,$sql);
 
-}
+
 
 
 if($result) {
@@ -24,7 +24,7 @@ if($result) {
     db_disconnect($db);
     exit;
   }
-
+}
 ?>
 <!DOCTYPE html>
 <html>
