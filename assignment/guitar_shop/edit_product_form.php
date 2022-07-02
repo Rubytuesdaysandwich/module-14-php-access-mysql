@@ -11,12 +11,12 @@ global $db;
     $sql .= "listPrice='" .$products['price'].  "' ";
     $sql .= "WHERE productID='" . $products['productID'] . "' ";
     $sql .= "LIMIT 1";
-    $result= mysqli_query($db,$sql);
+    $categories= mysqli_query($db,$sql);
 
 
 
 
-if($result) {
+if($categories) {
     return true;
   } else {
     // UPDATE failed
