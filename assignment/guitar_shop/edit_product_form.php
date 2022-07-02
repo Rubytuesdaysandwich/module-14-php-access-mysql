@@ -4,6 +4,7 @@ require('database.php');
 $sql = "SELECT * FROM categories ";
 $sql .= " ORDER BY categoryID ASC ";
 $categories= mysqli_query($db,$sql);
+var_dump($_SESSION);
 ?>
 <!DOCTYPE html>
 <html>
@@ -20,22 +21,29 @@ $categories= mysqli_query($db,$sql);
 <?php
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     //tracking if form is submitted
-        $categories=$_POST[''] ?? '';
-        $=$_POST['']??'';
-        $=$_POST['']??'';
-        if it is a post request this will get value for the session
+        $categories =$_POST[''] ?? '';
+        $code =$_POST['']??'';
+        $name =$_POST['']??'';
+        $price =$_POST['']??'';
+        
+       // if it is a post request this will get value for the session
         $_SESSION[''] =$;
         $_SESSION[''] =$;
         $_SESSION[''] =$;
+        $_SESSION[''] =$;
+        
 
     }else{
-        if not postrequest it will output them
-        $=$_SESSION['investment'] ??'';
-        $=$_SESSION['interest_rate'] ??'';
-        $=$_SESSION['years'] ??'';
+        //if not post request it will output them
+        $=$_SESSION[''] ??'';
+        $=$_SESSION[''] ??'';
+        $=$_SESSION[''] ??'';
     }
 
-
+    $category_id = filter_input(INPUT_POST, 'category_id', FILTER_VALIDATE_INT);
+    $code = filter_input(INPUT_POST, 'code');
+    $name = filter_input(INPUT_POST, 'name');
+    $price = filter_input(INPUT_POST, 'price', FILTER_VALIDATE_FLOAT);
 
 
 ?>
