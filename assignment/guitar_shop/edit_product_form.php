@@ -1,10 +1,30 @@
 <?php
 require('database.php');
 //Get Categories from the Database
-$sql = "SELECT * FROM categories ";
-$sql .= " ORDER BY categoryID ASC ";
-$categories= mysqli_query($db,$sql);
-var_dump($_SESSION);
+function update_products($products){
+global $db;
+
+    $sql = "UPDATE * categories SET  ";
+    $sql .= "categoryID='" . $products['category_id'] .  "'  ";
+    $sql .= "productCode ='" .$products['code'].  "' ";
+    $sql .= "productName='". $products['name']. "' ";
+    $sql .= "listPrice='" .$products['price'].  "' ";
+    $sql .= "WHERE productID='" . $products['productID'] . "' ";
+    $sql .= "LIMIT 1";
+    $result= mysqli_query($db,$sql);
+
+}
+
+
+if($result) {
+    return true;
+  } else {
+    // UPDATE failed
+    echo mysqli_error($db);
+    db_disconnect($db);
+    exit;
+  }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -21,29 +41,30 @@ var_dump($_SESSION);
 <?php
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     //tracking if form is submitted
-        $categories =$_POST[''] ?? '';
-        $code =$_POST['']??'';
-        $name =$_POST['']??'';
-        $price =$_POST['']??'';
+        $category_id =$_POST['category_id'] ?? '';
+        $code =$_POST['code']??'';
+        $name =$_POST['name']??'';
+        $price =$_POST['price']??'';
         
        // if it is a post request this will get value for the session
-        $_SESSION[''] =$;
-        $_SESSION[''] =$;
-        $_SESSION[''] =$;
-        $_SESSION[''] =$;
+        $_SESSION['category_id'] =$category_id;
+        $_SESSION['code'] =$code;
+        $_SESSION['name'] =$name;
+        $_SESSION['price'] =$price;
         
-
+        update_products($products);
     }else{
         //if not post request it will output them
-        $=$_SESSION[''] ??'';
-        $=$_SESSION[''] ??'';
-        $=$_SESSION[''] ??'';
+        $category_id=$_SESSION['category_id'] ??'';
+        $code=$_SESSION['code'] ??'';
+        $name=$_SESSION['name'] ??'';
+        $price=$_SESSION['price'] ??'';
     }
 
-    $category_id = filter_input(INPUT_POST, 'category_id', FILTER_VALIDATE_INT);
-    $code = filter_input(INPUT_POST, 'code');
-    $name = filter_input(INPUT_POST, 'name');
-    $price = filter_input(INPUT_POST, 'price', FILTER_VALIDATE_FLOAT);
+    // $category_id = filter_input(INPUT_POST, 'category_id', FILTER_VALIDATE_INT);
+    // $code = filter_input(INPUT_POST, 'code');
+    // $name = filter_input(INPUT_POST, 'name');
+    // $price = filter_input(INPUT_POST, 'price', FILTER_VALIDATE_FLOAT);
 
 
 ?>

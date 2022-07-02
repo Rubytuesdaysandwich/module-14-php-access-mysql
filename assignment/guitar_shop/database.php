@@ -1,11 +1,11 @@
 <?php
 
-
 define("DB_SERVER","localhost");
 define("DB_USER","guitar_pro");
 define("DB_PASS","passhere");
 define("DB_NAME","my_guitar_shop");
 $db=db_connect();
+session_start();
 
 //Create database connection
 function db_connect(){
