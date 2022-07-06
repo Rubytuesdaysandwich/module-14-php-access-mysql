@@ -1,13 +1,19 @@
 <?php
+//* note to self make product page php and move update function to that page.
+
+
+
+
+
 require('database.php');
 //Get Categories from the Database
 function update_products($products){
 global $db;
 
-    $sql = "UPDATE * categories SET  ";
-    $sql .= "categoryID='" . $products['category_id'] .  "'  ";
-    $sql .= "productCode ='" .$products['code'].  "' ";
-    $sql .= "productName='". $products['name']. "' ";
+    $sql = "UPDATE categories SET  ";//update categories
+    $sql .= "categoryID='" . $products['category_id'] .  "' , ";
+    $sql .= "productCode ='" .$products['code'].  "',";
+    $sql .= "productName='". $products['name']. "', ";
     $sql .= "listPrice='" .$products['price'].  "' ";
     $sql .= "WHERE productID='" . $products['productID'] . "' ";
     $sql .= "LIMIT 1";
