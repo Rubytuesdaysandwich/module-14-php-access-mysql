@@ -112,7 +112,7 @@ if (!isset($category_id)) {
                 </form></td>
                 <td><form action="edit_product_form.php" method="post">
                     <input type="hidden" name="product_id"
-                           value="<?php echo $product['productID']; ?>">
+                           value="<?php echo $product['productID'];//todo this go to edit page ?>">
                     <input type="hidden" name="category_id"
                            value="<?php echo $product['categoryID']; ?>">
                     <input type="submit" value="edit">

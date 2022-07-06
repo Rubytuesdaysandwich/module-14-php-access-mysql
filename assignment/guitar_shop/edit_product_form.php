@@ -7,30 +7,30 @@
 
 require('database.php');
 //Get Categories from the Database
-function update_products($products){
-global $db;
+// function update_products($products){
+// global $db;
 
-    $sql = "UPDATE categories SET  ";//update categories
-    $sql .= "categoryID='" . $products['category_id'] .  "' , ";
-    $sql .= "productCode ='" .$products['code'].  "',";
-    $sql .= "productName='". $products['name']. "', ";
-    $sql .= "listPrice='" .$products['price'].  "' ";
-    $sql .= "WHERE productID='" . $products['productID'] . "' ";
-    $sql .= "LIMIT 1";
-    $categories= mysqli_query($db,$sql);
-
-
+//     $sql = "UPDATE categories SET  ";//update categories
+//     $sql .= "categoryID='" . $products['category_id'] .  "' , ";
+//     $sql .= "productCode ='" .$products['code'].  "',";
+//     $sql .= "productName='". $products['name']. "', ";
+//     $sql .= "listPrice='" .$products['price'].  "' ";
+//     $sql .= "WHERE productID='" . $products['productID'] . "' ";
+//     $sql .= "LIMIT 1";
+//     $categories= mysqli_query($db,$sql);
 
 
-if($categories) {
-    return true;
-  } else {
-    // UPDATE failed
-    echo mysqli_error($db);
-    db_disconnect($db);
-    exit;
-  }
-}
+
+
+// if($categories) {
+//     return true;
+//   } else {
+//     // UPDATE failed
+//     echo mysqli_error($db);
+//     db_disconnect($db);
+//     exit;
+//   }
+// }
 ?>
 <!DOCTYPE html>
 <html>
@@ -45,27 +45,27 @@ if($categories) {
 <body>
 
 <?php
-if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    //tracking if form is submitted
-        $category_id =$_POST['category_id'] ?? '';
-        $code =$_POST['code']??'';
-        $name =$_POST['name']??'';
-        $price =$_POST['price']??'';
+// todo if($_SERVER['REQUEST_METHOD'] == 'POST'){
+//     //tracking if form is submitted
+//         $category_id =$_POST['category_id'] ?? '';
+//         $code =$_POST['code']??'';
+//         $name =$_POST['name']??'';
+//         $price =$_POST['price']??'';
         
-       // if it is a post request this will get value for the session
-        $_SESSION['category_id'] =$category_id;
-        $_SESSION['code'] =$code;
-        $_SESSION['name'] =$name;
-        $_SESSION['price'] =$price;
+//        // if it is a post request this will get value for the session
+//         $_SESSION['category_id'] =$category_id;
+//         $_SESSION['code'] =$code;
+//         $_SESSION['name'] =$name;
+//         $_SESSION['price'] =$price;
         
-        update_products($products);
-    }else{
-        //if not post request it will output them
-        $category_id=$_SESSION['category_id'] ??'';
-        $code=$_SESSION['code'] ??'';
-        $name=$_SESSION['name'] ??'';
-        $price=$_SESSION['price'] ??'';
-    }
+//         update_products($products);
+//     }else{
+//         //if not post request it will output them
+//         $category_id=$_SESSION['category_id'] ??'';
+//         $code=$_SESSION['code'] ??'';
+//         $name=$_SESSION['name'] ??'';
+//         $price=$_SESSION['price'] ??'';
+// todo    }
 
     // $category_id = filter_input(INPUT_POST, 'category_id', FILTER_VALIDATE_INT);
     // $code = filter_input(INPUT_POST, 'code');
