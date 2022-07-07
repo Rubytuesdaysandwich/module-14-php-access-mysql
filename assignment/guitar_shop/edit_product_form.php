@@ -45,7 +45,7 @@ require('database.php');
 <body>
 
 <?php
-// todo if($_SERVER['REQUEST_METHOD'] == 'POST'){
+//  if($_SERVER['REQUEST_METHOD'] == 'POST'){
 //     //tracking if form is submitted
 //         $category_id =$_POST['category_id'] ?? '';
 //         $code =$_POST['code']??'';
@@ -58,14 +58,14 @@ require('database.php');
 //         $_SESSION['name'] =$name;
 //         $_SESSION['price'] =$price;
         
-//         update_products($products);
+       
 //     }else{
 //         //if not post request it will output them
 //         $category_id=$_SESSION['category_id'] ??'';
 //         $code=$_SESSION['code'] ??'';
 //         $name=$_SESSION['name'] ??'';
 //         $price=$_SESSION['price'] ??'';
-// todo    }
+//     }
 
     // $category_id = filter_input(INPUT_POST, 'category_id', FILTER_VALIDATE_INT);
     // $code = filter_input(INPUT_POST, 'code');
@@ -84,9 +84,9 @@ require('database.php');
 
             <label>Category:</label>
             <select name="category_id">
-            <?php foreach ($categories as $category) : ?>
-                <option value="<?php echo $category['categoryID']; ?>">
-                    <?php echo $category['categoryName']; ?>
+            <?php foreach ($products as $product) : ?>
+                <option value="<?php echo $product['productID']; ?>">
+                    <?php echo $product['categoryID']; ?>
                 </option>
             <?php endforeach; ?>
             </select><br>

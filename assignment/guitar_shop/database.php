@@ -35,6 +35,7 @@ function confirm_db_connect() {//confirm the connection is good
     //	exit("Database query failed.");//if database query fails then exit
     }
   }
+  //connect to database end
 //protecting data sql injection
 
   function db_escape($connection, $string){
