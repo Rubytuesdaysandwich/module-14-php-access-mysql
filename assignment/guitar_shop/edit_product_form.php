@@ -1,10 +1,10 @@
 <?php
 //* note to self make product page php and move update function to that page.
 require('database.php');
-$sql = "SELECT * FROM products ";
+$sql = "SELECT * FROM categories ";
 $sql .= " ORDER BY categoryID ASC ";
 $categories= mysqli_query($db,$sql);
-//Get products from the Database
+//Get categories from the Database
 
 ?>
 <!DOCTYPE html>
@@ -20,6 +20,8 @@ $categories= mysqli_query($db,$sql);
 <body>
 
 <?php
+if
+
  if($_SERVER['REQUEST_METHOD'] == 'POST'){
     //tracking if form is submitted
         $category_id =$_POST['category_id'] ?? '';
@@ -35,15 +37,14 @@ $categories= mysqli_query($db,$sql);
 
     <main>
         <h1>edit product</h1>
-        <form action="edit_product.php?product_id=" method="post"
+        <form action="edit_product.php?product_id="  method="post"
               id="add_product_form">
 
             <label>Category:</label>
             <select name="category_id">
-            <?php foreach ($products as $product) : ?>
-                <option value="<?php echo $product['productID']; ?>">
-                    <?php echo $product['categoryID'];?>
-                
+            <?php foreach ($categories as $category) : ?>
+                <option value="<?php echo $category['categoryID']; ?>">
+                    <?php echo $category['categoryName']; ?>
                 </option>
             <?php endforeach; ?>
             </select><br>

@@ -5,6 +5,7 @@ $category_id = filter_input(INPUT_POST, 'category_id', FILTER_VALIDATE_INT);
 $code = filter_input(INPUT_POST, 'code');
 $name = filter_input(INPUT_POST, 'name');
 $price = filter_input(INPUT_POST, 'price', FILTER_VALIDATE_FLOAT);
+
     var_dump($category_id);
     var_dump($code);
     var_dump($name);
@@ -21,8 +22,7 @@ if ($category_id == null || $category_id == false ||
 //     $sql = "INSERT INTO products (categoryID,productCode,productName,listPrice) ";
 // $sql .= " VALUES('".$category_id."','".$code."','".$name."','".$price."') ";
 // $products= mysqli_query($db,$sql);
-
-
+$products="";
    
 
  //update items in the database.
