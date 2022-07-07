@@ -5,11 +5,11 @@ $category_id = filter_input(INPUT_POST, 'category_id', FILTER_VALIDATE_INT);
 $code = filter_input(INPUT_POST, 'code');
 $name = filter_input(INPUT_POST, 'name');
 $price = filter_input(INPUT_POST, 'price', FILTER_VALIDATE_FLOAT);
-    // var_dump($category_id);
-    // var_dump($code);
-    // var_dump($name);
-    // var_dump($price);
-// Validate inputs
+    var_dump($category_id);
+    var_dump($code);
+    var_dump($name);
+    var_dump($price);
+//Validate inputs
 if ($category_id == null || $category_id == false ||
         $code == null || $name == null || $price == null || $price == false) {
     $error = "Invalid product data. Check all fields and try again.";
@@ -17,10 +17,21 @@ if ($category_id == null || $category_id == false ||
 } else {
     require_once('database.php');
 
-    // Add the product to the database  
+    //!Add the product to the database  
 //     $sql = "INSERT INTO products (categoryID,productCode,productName,listPrice) ";
 // $sql .= " VALUES('".$category_id."','".$code."','".$name."','".$price."') ";
 // $products= mysqli_query($db,$sql);
+
+
+    $sql = "SELECT * FROM products ";
+    $sql .= "WHERE productID ='" . $products . "'";
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    $products = mysqli_fetch_assoc($result);
+    mysqli_free_result($result);
+    return $subject; // returns an assoc. array
+
+
  //update items in the database.
  $sql = "UPDATE categories SET  ";//update categories
  $sql .= "categoryID='" . $products['category_id'] .  "' , ";
@@ -29,7 +40,7 @@ if ($category_id == null || $category_id == false ||
  $sql .= "listPrice='" .$products['price'].  "' ";
  $sql .= "WHERE productID='" . $products['productID'] . "' ";
  $sql .= "LIMIT 1";
- $categories= mysqli_query($db,$sql);
+ $products= mysqli_query($db,$sql);
 
 
 if(!empty($category_id ||$code || $name ||$price )){

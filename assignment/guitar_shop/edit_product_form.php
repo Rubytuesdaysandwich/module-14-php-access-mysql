@@ -1,11 +1,9 @@
 <?php
 //* note to self make product page php and move update function to that page.
-
-
-
-
-
 require('database.php');
+$sql = "SELECT * FROM products ";
+$sql .= " ORDER BY categoryID ASC ";
+$categories= mysqli_query($db,$sql);
 //Get Categories from the Database
 // function update_products($products){
 // global $db;
@@ -45,33 +43,14 @@ require('database.php');
 <body>
 
 <?php
-//  if($_SERVER['REQUEST_METHOD'] == 'POST'){
-//     //tracking if form is submitted
-//         $category_id =$_POST['category_id'] ?? '';
-//         $code =$_POST['code']??'';
-//         $name =$_POST['name']??'';
-//         $price =$_POST['price']??'';
+ if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    //tracking if form is submitted
+        $category_id =$_POST['category_id'] ?? '';
+        $code =$_POST['code']??'';
+        $name =$_POST['name']??'';
+        $price =$_POST['price']??'';
         
-//        // if it is a post request this will get value for the session
-//         $_SESSION['category_id'] =$category_id;
-//         $_SESSION['code'] =$code;
-//         $_SESSION['name'] =$name;
-//         $_SESSION['price'] =$price;
-        
-       
-//     }else{
-//         //if not post request it will output them
-//         $category_id=$_SESSION['category_id'] ??'';
-//         $code=$_SESSION['code'] ??'';
-//         $name=$_SESSION['name'] ??'';
-//         $price=$_SESSION['price'] ??'';
-//     }
-
-    // $category_id = filter_input(INPUT_POST, 'category_id', FILTER_VALIDATE_INT);
-    // $code = filter_input(INPUT_POST, 'code');
-    // $name = filter_input(INPUT_POST, 'name');
-    // $price = filter_input(INPUT_POST, 'price', FILTER_VALIDATE_FLOAT);
-
+ }
 
 ?>
 
@@ -79,14 +58,15 @@ require('database.php');
 
     <main>
         <h1>edit product</h1>
-        <form action="edit_product.php" method="post"
+        <form action="edit_product.php?product_id" method="post"
               id="add_product_form">
 
             <label>Category:</label>
             <select name="category_id">
             <?php foreach ($products as $product) : ?>
                 <option value="<?php echo $product['productID']; ?>">
-                    <?php echo $product['categoryID']; ?>
+                    <?php echo $product['categoryID'];?>
+                
                 </option>
             <?php endforeach; ?>
             </select><br>
