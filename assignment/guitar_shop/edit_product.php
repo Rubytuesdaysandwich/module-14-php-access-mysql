@@ -23,17 +23,10 @@ if ($category_id == null || $category_id == false ||
 // $products= mysqli_query($db,$sql);
 
 
-    $sql = "SELECT * FROM products ";
-    $sql .= "WHERE productID ='" . $products . "'";
-    $result = mysqli_query($db, $sql);
-    confirm_result_set($result);
-    $products = mysqli_fetch_assoc($result);
-    mysqli_free_result($result);
-    return $subject; // returns an assoc. array
-
+   
 
  //update items in the database.
- $sql = "UPDATE categories SET  ";//update categories
+ $sql = "UPDATE products SET  ";//update categories
  $sql .= "categoryID='" . $products['category_id'] .  "' , ";
  $sql .= "productCode ='" .$products['code'].  "',";
  $sql .= "productName='". $products['name']. "', ";

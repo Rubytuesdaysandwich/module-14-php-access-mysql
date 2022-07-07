@@ -4,31 +4,8 @@ require('database.php');
 $sql = "SELECT * FROM products ";
 $sql .= " ORDER BY categoryID ASC ";
 $categories= mysqli_query($db,$sql);
-//Get Categories from the Database
-// function update_products($products){
-// global $db;
+//Get products from the Database
 
-//     $sql = "UPDATE categories SET  ";//update categories
-//     $sql .= "categoryID='" . $products['category_id'] .  "' , ";
-//     $sql .= "productCode ='" .$products['code'].  "',";
-//     $sql .= "productName='". $products['name']. "', ";
-//     $sql .= "listPrice='" .$products['price'].  "' ";
-//     $sql .= "WHERE productID='" . $products['productID'] . "' ";
-//     $sql .= "LIMIT 1";
-//     $categories= mysqli_query($db,$sql);
-
-
-
-
-// if($categories) {
-//     return true;
-//   } else {
-//     // UPDATE failed
-//     echo mysqli_error($db);
-//     db_disconnect($db);
-//     exit;
-//   }
-// }
 ?>
 <!DOCTYPE html>
 <html>
@@ -58,7 +35,7 @@ $categories= mysqli_query($db,$sql);
 
     <main>
         <h1>edit product</h1>
-        <form action="edit_product.php?product_id" method="post"
+        <form action="edit_product.php?product_id=" method="post"
               id="add_product_form">
 
             <label>Category:</label>
