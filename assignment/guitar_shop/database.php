@@ -41,7 +41,37 @@ function confirm_db_connect() {//confirm the connection is good
   function db_escape($connection, $string){
     return mysqli_real_escape_string($connection, $string);
   }
+  //select all from categories should return instruments.
+ function select_all_categories($categories){
+  global $db;
+  $sql = "SELECT * FROM categories ";
+  $sql .= " ORDER BY categoryID ASC ";
+   $categories= mysqli_query($db,$sql);
 
+ return $categories;
 
+ }
+//select all items where product id eqauls the productID
+function select_from_product_with_id($product_id){
+global $db;
+  $sql = "SELECT * FROM products ";
+  $sql .= " WHERE productID='". $product_id .  "' ";
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  $products = mysqli_fetch_assoc($result);
+  mysqli_free_result($result);
+  return$products;
+}
 
+//update products
+function update_products($products){
+  $sql = "UPDATE products SET  ";//update categories
+  $sql .= "categoryID='" . $products['category_id'] .  "' , ";
+  $sql .= "productCode ='" .$products['code'] .  "',";
+  $sql .= "productName='". $products['name'] . "', ";
+  $sql .= "listPrice='" .$products['price'].  "' ";
+  $sql .= "WHERE productID='" . $products['productID'] . "' ";
+  $sql .= "LIMIT 1";
+  $products= mysqli_query($db,$sql);
+}
 ?>

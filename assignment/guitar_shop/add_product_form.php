@@ -13,7 +13,7 @@ $categories= mysqli_query($db,$sql);
     <title>My Guitar Shop</title>
     <link rel="stylesheet" type="text/css" href="main.css">
 </head>
-,,
+
 <!-- the body section -->
 <body>
 
