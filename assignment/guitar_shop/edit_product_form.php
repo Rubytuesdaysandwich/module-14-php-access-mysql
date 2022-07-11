@@ -23,7 +23,7 @@ var_dump($_POST);
 
 <?php
  
- select_from_product_with_id($product_id);
+ select_from_product_with_id($product_id);//retrieve product from database by the id
 
 
 
