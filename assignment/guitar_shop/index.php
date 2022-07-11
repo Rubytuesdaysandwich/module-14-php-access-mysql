@@ -38,9 +38,11 @@ if (!isset($category_id)) {
 
     $sql = "SELECT * FROM categories ";//select categories
     $sql .= "ORDER BY categoryID  ASC";//order by position
-    
-    $categories = mysqli_query($db, $sql);//result
-
+    //*echo $sql; this can be used to trouble shoot connection
+    $categories = mysqli_query($db, $sql);
+    // confirm_result_set($result);//confirm the result
+    // return $result;
+//   }
 
 // Get products for selected category
 //function find_products() {//find all products from my guitar database
