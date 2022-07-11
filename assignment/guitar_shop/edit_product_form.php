@@ -3,11 +3,13 @@
 require_once('database.php');
 $category_id = filter_input(INPUT_POST, 'category_id', FILTER_VALIDATE_INT);
 $product_id = filter_input(INPUT_POST, 'product_id', FILTER_VALIDATE_INT);
-$categoryName = filter_input(INPUT_POST, 'categoryName');
+//$categoryName = filter_input(INPUT_POST, 'categoryName');
 
 
-
-$categories=select_all_categories($category_id);
+$categories=select_all_categories();
+// $sql = "SELECT * FROM categories ";
+// $sql .= " ORDER BY categoryID ASC ";
+// $categories= mysqli_query($db,$sql);
 //Get categories from the Database
 
 ?>
@@ -27,23 +29,9 @@ $categories=select_all_categories($category_id);
 $product = select_from_product_with_id($product_id);
 //retrieve product from database by the id
 
-$expire = time() + 60*60*24*365;//cookie expires
-if(is_post_request()) {
-    // Form was submitted
-    $instrument= $_POST['category_id'] ?? '';
-    $category_choice=$_POST['categoryName']?? '';
-    setcookie('category_id', $instrument, $expire);//set cookies
-    setcookie('categoryName', $category_choice, $expire);//set cookies
-    
-} else {
-    // Read the stored value (if any)
-    $instrument = $_COOKIE['category_id'] ?? '';
-    $category_choice = $_COOKIE['categoryName'] ?? '';
-}
 var_dump($product);
 var_dump($categories);
 var_dump($_POST);
-  var_dump($_COOKIE);
 ?>
 
     <header><h1>Product Manager</h1></header>
@@ -56,8 +44,8 @@ var_dump($_POST);
             <select name="category_id">
             <?php 
             foreach($categories as $category_choice) {
-                echo "<option value=\"{$category_choice['category_id']}\"";//start of option language choice
-                if($instrument == $category_choice) {
+                echo "<option value=\"{$category_choice['categoryID']}\"";//start of option language choice
+                if($category_id == $category_choice['categoryID']) {//compare category choice to category id
                   echo " selected";//echo the selected instrument back to the user
                 }
                 echo ">{$category_choice['categoryName']}</option>";//end language choice out of choices

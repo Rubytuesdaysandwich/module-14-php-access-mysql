@@ -52,7 +52,7 @@ function confirm_db_connect() {//confirm the connection is good
   
   
   //select all from categories should return instruments.
- function select_all_categories($category){
+ function select_all_categories(){
   global $db;
   $sql = "SELECT * FROM categories ";
   $sql .= " ORDER BY categoryID ASC ";

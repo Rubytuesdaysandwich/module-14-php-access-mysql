@@ -31,20 +31,21 @@ if ($category_id == null || $category_id == false ||
 
 
 
-    //update the product to the database 
+    //!Add the product to the database 
+   //todo $products="";
    if(is_post_request()){
          $products=[];//assoc array
          $products['categoryID'] = $_POST['category_id']??'';//post to categoryID
          $products['productCode'] = $_POST['code']??'';//post to product code
          $products['productName'] = $_POST['name']??'';//post to productname
          $products['listPrice'] = $_POST['price']??'';//post to list price
-        $products['productID']= $_POST['productID']??'';//post to product id
+        $products['productID']= $_POST['productID']??'';
          $result = update_products($products); 
          
         }
         
         
-//todo delete         $expire = time() + 60*60*24*365;//cookie expires
+//todo         $expire = time() + 60*60*24*365;//cookie expires
 // if(is_post_request()) {
 //     // Form was submitted
 //     $instrument= $_POST['categoryID'] ?? '';
