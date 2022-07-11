@@ -5,7 +5,7 @@ define("DB_USER","guitar_pro");
 define("DB_PASS","passhere");
 define("DB_NAME","my_guitar_shop");
 $db=db_connect();
-session_start();
+//session_start();
 
 //Create database connection
 function db_connect(){
@@ -52,7 +52,7 @@ function confirm_db_connect() {//confirm the connection is good
   
   
   //select all from categories should return instruments.
- function select_all_categories($categories){
+ function select_all_categories($category){
   global $db;
   $sql = "SELECT * FROM categories ";
   $sql .= " ORDER BY categoryID ASC ";
@@ -77,10 +77,10 @@ global $db;
 function update_products($products){
   global $db;
   $sql = "UPDATE products SET  ";//products
-  $sql .= "categoryID='" . db_escape($db,$products['category_id']) .  "' , ";
-  $sql .= "productCode ='" . db_escape($db,$products['code']) .  "',";
-  $sql .= "productName='". db_escape($db,$products['name']) . "', ";
-  $sql .= "listPrice='" . db_escape($db,$products['price']).  "' ";
+  $sql .= "categoryID='" . db_escape($db,$products['categoryID']) .  "' , ";
+  $sql .= "productCode ='" . db_escape($db,$products['productCode']) .  "',";
+  $sql .= "productName='". db_escape($db,$products['productName']) . "', ";
+  $sql .= "listPrice='" . db_escape($db,$products['listPrice']).  "' ";
   $sql .= "WHERE productID='" . db_escape($db,$products['productID']) . "' ";
   $sql .= "LIMIT 1";
 

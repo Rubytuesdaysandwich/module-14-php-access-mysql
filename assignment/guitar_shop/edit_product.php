@@ -15,11 +15,11 @@ if(isset($_POST['category_id']) || isset($_POST['code']) || isset($_POST['name']
 
 }
 
-    var_dump($category_id);
-    var_dump($code);
-    var_dump($name);
-    var_dump($price);
-    var_dump($_POST);
+    // var_dump($category_id);
+    // var_dump($code);
+    // var_dump($name);
+    // var_dump($price);
+    // var_dump($_POST);
 //Validate inputs
 if ($category_id == null || $category_id == false ||
         $code == null || $name == null || $price == null || $price == false) {
@@ -31,31 +31,33 @@ if ($category_id == null || $category_id == false ||
 
 
 
-    //!Add the product to the database 
-   //todo $products="";
+    //update the product to the database 
    if(is_post_request()){
          $products=[];//assoc array
          $products['categoryID'] = $_POST['category_id']??'';//post to categoryID
          $products['productCode'] = $_POST['code']??'';//post to product code
          $products['productName'] = $_POST['name']??'';//post to productname
          $products['listPrice'] = $_POST['price']??'';//post to list price
-   
+        $products['productID']= $_POST['productID']??'';//post to product id
          $result = update_products($products); 
          
         }
         
         
-        //update items in the database.
-//  $sql = "UPDATE products SET  ";//update categories
-//  $sql .= "categoryID='" . $products['category_id'] .  "' , ";
-//  $sql .= "productCode ='" .$products['code'] .  "',";
-//  $sql .= "productName='". $products['name'] . "', ";
-//  $sql .= "listPrice='" .$products['price'].  "' ";
-//  $sql .= "WHERE productID='" . $products['productID'] . "' ";
-//  $sql .= "LIMIT 1";
-//  $products= mysqli_query($db,$sql);
+//todo delete         $expire = time() + 60*60*24*365;//cookie expires
+// if(is_post_request()) {
+//     // Form was submitted
+//     $instrument= $_POST['categoryID'] ?? '';
+//     $category_choice=$_POST['categoryName']?? '';
+//     setcookie('categoryID', $instrument, $expire);//set cookies
+//     setcookie('categoryName', $instrument, $expire);//set cookies
+  
+//   } else {
+//     // Read the stored value (if any)
+//     $instrument = $_COOKIE['categoryID'] ?? '';
+//     $category_choice=$_COOKIE['categoryName']??'';
+//todo delete   }
 
-var_dump($product);
 
 
 

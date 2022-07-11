@@ -3,10 +3,11 @@
 require_once('database.php');
 $category_id = filter_input(INPUT_POST, 'category_id', FILTER_VALIDATE_INT);
 $product_id = filter_input(INPUT_POST, 'product_id', FILTER_VALIDATE_INT);
+$categoryName = filter_input(INPUT_POST, 'categoryName');
 
-$sql = "SELECT * FROM categories ";
-$sql .= " ORDER BY categoryID ASC ";
-$categories= mysqli_query($db,$sql);
+
+
+$categories=select_all_categories($category_id);
 //Get categories from the Database
 
 ?>
@@ -23,33 +24,46 @@ $categories= mysqli_query($db,$sql);
 <body>
 
 <?php
-$product = select_from_product_with_id($product_id);//retrieve product from database by the i
+$product = select_from_product_with_id($product_id);
+//retrieve product from database by the id
+
+$expire = time() + 60*60*24*365;//cookie expires
+if(is_post_request()) {
+    // Form was submitted
+    $instrument= $_POST['category_id'] ?? '';
+    $category_choice=$_POST['categoryName']?? '';
+    setcookie('category_id', $instrument, $expire);//set cookies
+    setcookie('categoryName', $category_choice, $expire);//set cookies
+    
+} else {
+    // Read the stored value (if any)
+    $instrument = $_COOKIE['category_id'] ?? '';
+    $category_choice = $_COOKIE['categoryName'] ?? '';
+}
 var_dump($product);
-
-
-//  if(is_post_request()){
-//     //tracking if form is submitted
-//         $category_id =$_POST['category_id'] ?? '';
-//         $code  =$_POST['code']??'';
-//         $name  =$_POST['name']??'';
-//         $price =$_POST['price']??'';
-        
-//  }
+var_dump($categories);
+var_dump($_POST);
+  var_dump($_COOKIE);
 ?>
 
     <header><h1>Product Manager</h1></header>
 
     <main>
         <h1>edit product</h1>
-        <form action="edit_product.php?product_id="  method="post" id="add_product_form">
-
+        <form action="edit_product.php"  method="post" id="add_product_form">
+            <input type="hidden" name="productID"value=<?php echo $product_id;?>>
             <label>Category:</label>
             <select name="category_id">
-            <?php foreach ($categories as $category) : ?>
-                <option value="<?php echo $category['categoryID']; ?>">
-                    <?php echo $category['categoryName']; ?>
-                </option>
-            <?php endforeach; ?>
+            <?php 
+            foreach($categories as $category_choice) {
+                echo "<option value=\"{$category_choice['category_id']}\"";//start of option language choice
+                if($instrument == $category_choice) {
+                  echo " selected";//echo the selected instrument back to the user
+                }
+                echo ">{$category_choice['categoryName']}</option>";//end language choice out of choices
+              }
+              ?>
+            <?php //endforeach; ?>
             </select><br>
 
             <label>Code:</label>
