@@ -41,6 +41,16 @@ function confirm_db_connect() {//confirm the connection is good
   function db_escape($connection, $string){
     return mysqli_real_escape_string($connection, $string);
   }
+  
+  function is_post_request(){
+    return $_SERVER['REQUEST_METHOD'] == 'POST';
+  }
+  function is_get_request(){
+    return $_SERVER['REQUEST_METHOD'] == 'GET';
+  }
+  
+  
+  
   //select all from categories should return instruments.
  function select_all_categories($categories){
   global $db;
@@ -65,13 +75,25 @@ global $db;
 
 //update products
 function update_products($products){
-  $sql = "UPDATE products SET  ";//update categories
-  $sql .= "categoryID='" . $products['category_id'] .  "' , ";
-  $sql .= "productCode ='" .$products['code'] .  "',";
-  $sql .= "productName='". $products['name'] . "', ";
-  $sql .= "listPrice='" .$products['price'].  "' ";
-  $sql .= "WHERE productID='" . $products['productID'] . "' ";
+  global $db;
+  $sql = "UPDATE products SET  ";//products
+  $sql .= "categoryID='" . db_escape($db,$products['category_id']) .  "' , ";
+  $sql .= "productCode ='" . db_escape($db,$products['code']) .  "',";
+  $sql .= "productName='". db_escape($db,$products['name']) . "', ";
+  $sql .= "listPrice='" . db_escape($db,$products['price']).  "' ";
+  $sql .= "WHERE productID='" . db_escape($db,$products['productID']) . "' ";
   $sql .= "LIMIT 1";
-  $products= mysqli_query($db,$sql);
+
+  $result= mysqli_query($db,$sql);
+
+  if($result) {
+    return true;//succeed
+  } else {
+    // UPDATE failed
+    echo mysqli_error($db);
+    db_disconnect($db);
+    exit;
+  }
+
 }
 ?>

@@ -1,13 +1,14 @@
 <?php
 //* note to self make product page php and move update function to that page.
-require('database.php');
+require_once('database.php');
+$category_id = filter_input(INPUT_POST, 'category_id', FILTER_VALIDATE_INT);
 $product_id = filter_input(INPUT_POST, 'product_id', FILTER_VALIDATE_INT);
 
 $sql = "SELECT * FROM categories ";
 $sql .= " ORDER BY categoryID ASC ";
 $categories= mysqli_query($db,$sql);
 //Get categories from the Database
-var_dump($_POST);
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -22,32 +23,25 @@ var_dump($_POST);
 <body>
 
 <?php
- 
- select_from_product_with_id($product_id);//retrieve product from database by the id
+$product = select_from_product_with_id($product_id);//retrieve product from database by the i
+var_dump($product);
 
 
-
-//if(!isset($_POST(['code']))|| !isset($_POST(['code'])) || !isset($_POST(['code'])) || !isset($_POST(['code'])) || ))){
-  $code =$_POST['code']??'';
-//}
-
- if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    //tracking if form is submitted
-        $category_id =$_POST['category_id'] ?? '';
-        $code =$_POST['code']??'';
-        $name =$_POST['name']??'';
-        $price =$_POST['price']??'';
+//  if(is_post_request()){
+//     //tracking if form is submitted
+//         $category_id =$_POST['category_id'] ?? '';
+//         $code  =$_POST['code']??'';
+//         $name  =$_POST['name']??'';
+//         $price =$_POST['price']??'';
         
- }
-
+//  }
 ?>
 
     <header><h1>Product Manager</h1></header>
 
     <main>
         <h1>edit product</h1>
-        <form action="edit_product.php?product_id="  method="post"
-              id="add_product_form">
+        <form action="edit_product.php?product_id="  method="post" id="add_product_form">
 
             <label>Category:</label>
             <select name="category_id">
@@ -59,13 +53,13 @@ var_dump($_POST);
             </select><br>
 
             <label>Code:</label>
-            <input type="text" name="code"<?php //echo $products['code'];?>><br>
+            <input type="text" name="code" value="<?php echo $product['productCode']; ?>"><br>
 
             <label>Name:</label>
-            <input type="text" name="name"<?php //echo $products['name']; ?>><br>
+            <input type="text" name="name"value="<?php echo $product['productName']; ?>"><br>
 
             <label>List Price:</label>
-            <input type="text" name="price"<?php //echo $products['price'];?>><br>
+            <input type="text" name="price"value="<?php echo $product['listPrice'];  ?>"><br>
 
             <label>&nbsp;</label>
             <input type="submit" value="edit product" ><br>
