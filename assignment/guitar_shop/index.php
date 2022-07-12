@@ -16,6 +16,16 @@ if (!isset($category_id)) {
         $category_id = 1;
     }
 }
+
+
+$url = $_SERVER["REQUEST_URI"];//request the uri from the SERVER
+
+$url_components = parse_url($url);//parse url assigned to $url_components
+parse_str($url_components['query'], $params);
+
+$category_id = $params['category_id'];
+ echo $category_id;
+
 // Get name for selected category
 
  //function find_name_selected_category() {//find all subjects from subjects database
@@ -56,6 +66,8 @@ if (!isset($category_id)) {
     //return $result;
   //}
 
+  
+ // select_from_product_with_categoryid(1);
 ?>
 <!DOCTYPE html>
 <html>

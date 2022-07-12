@@ -1,0 +1,26 @@
+if($category_id=1){
+
+   $sql = "SELECT * FROM products  ";//select categories
+   $sql .= "WHERE categoryID='" . 1 . "'";//by category name
+   //*echo $sql; this can be used to trouble shoot connection
+   $result = mysqli_query($db, $sql);//send the query to the database
+   $row = $result -> fetch_assoc();//fetch assoc array assign to $row
+   $category_name = $row['categoryName'];
+}elseif($category_id=2){
+    
+    $sql = "SELECT * FROM products  ";//select categories
+    $sql .= "WHERE categoryID='" . 2 . "'";//by category name
+    //*echo $sql; this can be used to trouble shoot connection
+    $result = mysqli_query($db, $sql);//send the query to the database
+    $row = $result -> fetch_assoc();//fetch assoc array assign to $row
+    $category_name = $row['categoryName'];
+}
+elseif($category_id=3){
+
+    $sql = "SELECT * FROM products  ";//select categories
+    $sql .= "WHERE categoryID='" . 3 . "'";//by category name
+    //*echo $sql; this can be used to trouble shoot connection
+    $result = mysqli_query($db, $sql);//send the query to the database
+    $row = $result -> fetch_assoc();//fetch assoc array assign to $row
+    $category_name = $row['categoryName'];
+ }

@@ -73,6 +73,22 @@ global $db;
   return$products;
 }
 
+function select_from_product_with_categoryid($category_id){
+  global $db;
+    $sql = "SELECT * FROM products ";
+    $sql .= " WHERE categoryID='". $category_id .  "' ";
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    $products = mysqli_fetch_assoc($result);
+    mysqli_free_result($result);
+    return$products;
+  }
+
+
+
+
+
+
 //update products
 function update_products($products){
   global $db;
