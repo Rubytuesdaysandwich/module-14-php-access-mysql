@@ -18,18 +18,31 @@ if (!isset($category_id)) {
 }
 
 
-$url = $_SERVER["REQUEST_URI"];//request the uri from the SERVER
+//! $url = $_SERVER["REQUEST_URI"];//request the uri from the SERVER
 
-$url_components = parse_url($url);//parse url assigned to $url_components
-parse_str($url_components['query'], $params);
+// $url_components = parse_url($url);//parse url assigned to $url_components
+// parse_str($url_components['query'], $params);
 
-$category_id = $params['category_id'];
- echo $category_id;
+// $category_id = $params['category_id'];
+//  echo $category_id;
+//! Get name for selected category
 
-// Get name for selected category
+
+if(is_get_request()){
+    $url = $_SERVER["REQUEST_URI"];//request the uri from the SERVER
+    $url_components = parse_url($url);//parse url assigned to $url_components
+    parse_str($url_components['query'], $params);
+    $category_id = $params['category_id'];
+     echo $category_id;
+
+
+}
+
+
+
 
  //function find_name_selected_category() {//find all subjects from subjects database
-    // global $db;//grabbing db from the outside scop so it has access
+    // global $db;//grabbing db from the outside scope so it has access
 
     $sql = "SELECT categoryName FROM categories  ";//select categories
     $sql .= "WHERE categoryID='" . db_escape($db,$category_id) . "'";//by category name
@@ -65,9 +78,8 @@ $category_id = $params['category_id'];
     //confirm_result_set($result);//confirm the result
     //return $result;
   //}
-
-  
- // select_from_product_with_categoryid(1);
+  var_dump($_GET);
+ 
 ?>
 <!DOCTYPE html>
 <html>
