@@ -1,9 +1,9 @@
 <?php
 
 define("DB_SERVER","localhost");
-define("DB_USER","guitar_pro");
-define("DB_PASS","passhere");
-define("DB_NAME","my_guitar_shop");
+define("DB_USER","ruebendu_guitar_pro");
+define("DB_PASS","A2vq65cCX(2[iB");
+define("DB_NAME","ruebendu_my_guitar_shop");
 $db=db_connect();
 //session_start();
 
