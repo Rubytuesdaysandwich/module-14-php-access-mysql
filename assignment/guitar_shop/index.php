@@ -5,15 +5,17 @@ require_once('database.php');
 
 $categories = array("categoryID"=>"","categoryName"=>"");
 $products = array("productCode"=>"","productName"=>"","listPrice"=>"","productID"=>"","categoryID"=>"");
-
-
-
-if(is_get_request()){
-    $url = $_SERVER["REQUEST_URI"];//request the uri from the SERVER
-    $url_components = parse_url($url);//parse url assigned to $url_components
-    parse_str($url_components['query'], $params);
-    $category_id = $params['category_id'];
+// Get category ID
+if (!isset($category_id)) {
+    $category_id = filter_input(INPUT_GET, 'category_id', 
+            FILTER_VALIDATE_INT);
+    if ($category_id == NULL || $category_id == FALSE) {
+        $category_id = 1;
     }
+}
+// Get name for selected category
+
+
     
 
  //function find_name_selected_category() {//find all subjects from subjects database
