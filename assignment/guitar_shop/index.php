@@ -5,27 +5,12 @@ require_once('database.php');
 
 $categories = array("categoryID"=>"","categoryName"=>"");
 $products = array("productCode"=>"","productName"=>"","listPrice"=>"","productID"=>"","categoryID"=>"");
-// $category_name="";
 
 
-// Get category ID
-if (!isset($category_id)) {
-    $category_id = filter_input(INPUT_GET, 'category_id', 
-            FILTER_VALIDATE_INT);
-    if ($category_id == NULL || $category_id == FALSE) {
-        $category_id = 1;
-    }
-}
 
 
-//! $url = $_SERVER["REQUEST_URI"];//request the uri from the SERVER
 
-// $url_components = parse_url($url);//parse url assigned to $url_components
-// parse_str($url_components['query'], $params);
 
-// $category_id = $params['category_id'];
-//  echo $category_id;
-//! Get name for selected category
 
 
 if(is_get_request()){
@@ -33,13 +18,8 @@ if(is_get_request()){
     $url_components = parse_url($url);//parse url assigned to $url_components
     parse_str($url_components['query'], $params);
     $category_id = $params['category_id'];
-     echo $category_id;
-
-
-}
-
-
-
+    }
+    
 
  //function find_name_selected_category() {//find all subjects from subjects database
     // global $db;//grabbing db from the outside scope so it has access
@@ -78,7 +58,7 @@ if(is_get_request()){
     //confirm_result_set($result);//confirm the result
     //return $result;
   //}
-  var_dump($_GET);
+
  
 ?>
 <!DOCTYPE html>
@@ -122,7 +102,7 @@ if(is_get_request()){
                 <th>&nbsp;</th>
             </tr>
 
-            <?php foreach ($products as $product) : ?>
+            <?php foreach ($products as $product) : if($product['categoryID']==$category_id){//if product categoryID is equal to $category_id output the selected category?>
             <tr>
                 <td><?php echo $product['productCode']; ?></td>
                 <td><?php echo $product['productName']; ?></td>
@@ -143,7 +123,13 @@ if(is_get_request()){
                 </form></td>
 
             </tr>
-            <?php endforeach;?>
+            <?php } else{
+
+
+
+
+            }
+        endforeach;?>
         </table>
         <p><a href="add_product_form.php">Add Product</a></p>
         <p><a href="category_list.php">List Categories</a></p>        

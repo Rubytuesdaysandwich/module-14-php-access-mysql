@@ -29,9 +29,9 @@ $categories=select_all_categories();
 $product = select_from_product_with_id($product_id);
 //retrieve product from database by the id
 
-var_dump($product);
-var_dump($categories);
-var_dump($_POST);
+//* var_dump($product);
+//* var_dump($categories);
+//* var_dump($_POST);
 ?>
 
     <header><h1>Product Manager</h1></header>
